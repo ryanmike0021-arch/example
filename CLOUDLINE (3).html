@@ -1,0 +1,349 @@
+http://localhost:26543/storage/emulated/0/CLOUDLINE+%281%29.html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CLOUDLINE CONSUMER GOODS TRADING</title>
+    <style>
+:root {
+        --bg: #f4f6fa;
+        --card: #fff;
+        --ink: #172033;
+        --muted: #667085;
+        --line: #e5e9f0;
+        --blue: #adde86;
+        --green: #16834a;
+        --orange: #b66a00;
+        --red: #c0392b
+    }
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            font: 15px Arial,sans-serif;
+            color: var(--ink)
+        }
+        header {
+            background: #172b4d;
+            color: white;
+            padding: 22px max(18px,calc((100% - 1100px)/2))
+        }
+        header h1 {
+            margin: 0 0 6px;
+            font-size: 24px
+        }
+
+        header p {
+            margin: 0;
+            color: #d8e1f2
+        }
+        main {
+            max-width: 1100px;
+            margin: 22px auto;
+            padding: 0 16px
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 12px;
+            margin-bottom: 16px
+        }
+        .stat,.panel {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 16px
+        }
+        .stat span {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 27px;
+            margin-top: 8px
+        }
+        .layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 16px;
+            align-items: start
+        }
+        h2 {
+            font-size: 18px;
+            margin: 0 0 14px
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 11px 0 5px
+        }
+        input,select,textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccd3df;
+            border-radius: 7px;
+            font: inherit;
+            background: white
+        }
+        textarea {
+            min-height: 60px;
+            resize: vertical
+        }
+        button {
+            border: 0;
+            border-radius: 7px;
+            padding: 10px 13px;
+            font-weight: 600;
+            cursor: pointer
+        }
+        .primary {
+            background: var(--blue);
+            color: white
+        }
+
+        .secondary {
+            background: #edf1f7;
+            color: #26334a
+        }
+
+        .danger {
+            background: #fff0ef;
+            color: var(--red)
+        }
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap
+        }
+        .toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px
+        }
+
+        .toolbar input {
+            flex: 1
+        }
+        .table-wrap {
+            overflow-x: auto
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 680px
+        }
+        th,td {
+            text-align: left;
+            padding: 11px 9px;
+            border-bottom: 1px solid var(--line);
+            font-size: 13px;
+            vertical-align: top
+        }
+        th {
+            color: var(--muted);
+            font-size: 12px;
+            background: #fafbfc
+        }
+        .pill {
+            display: inline-block;
+            padding: 5px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700
+        }
+        .pending {
+            background: #fff3d9;
+            color: #925b00
+        }
+
+        .processing {
+            background: #e7efff;
+            color: #244ca5
+        }
+
+        .delivered {
+            background: #e2f6e9;
+            color: #146b3b
+        }
+
+        .cancelled {
+            background: #ffe8e6;
+            color: #a32b22
+        }
+        .smallbtn {
+            padding: 6px 8px;
+            font-size: 12px;
+            margin: 2px
+        }
+        .empty {
+            text-align: center;
+            color: var(--muted);
+            padding: 28px
+        }
+        .note {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-top: 12px
+        }
+        @media(max-width:800px) {
+            .layout {
+                grid-template-columns: 1fr
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr)
+            }}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CLOUDLINE CONSUMER GOODS TRADING</h1><p>
+            Lorena
+        </p>
+    </header>
+    <main>
+        <section class="stats">
+            <div class="stat">
+                <span>Total Orders</span><strong id="totalCount">0</strong>
+            </div>
+            <div class="stat">
+                <span>Pending</span><strong id="pendingCount">0</strong>
+            </div>
+            <div class="stat">
+                <span>Processing</span><strong id="processingCount">0</strong>
+            </div>
+            <div class="stat">
+                <span>Delivered</span><strong id="deliveredCount">0</strong>
+            </div>
+        </section>
+        <section class="layout">
+            <div class="panel">
+                <h2 id="formTitle">Add New Pre-Order</h2>
+                <form id="orderForm">
+                    <input type="hidden" id="editId">
+                    <label for="customer">School Name</label><input id="customer" required placeholder="e.g. Gen T NHS">
+                    <label for="orderDate">Order Date </label><input id="orderDate" type="date" required>
+                    <label for="status">Order Status</label>
+                    <select id="status"><option>Pending</option><option>Processing</option><option>Delivered</option><option>Cancelled</option></select>
+                    <label for="notes">Remarks / Notes</label><textarea id="notes" placeholder="Additional details..."></textarea>
+                    <div class="actions">
+                        <button class="primary" type="submit" id="saveBtn">Save Order</button><button class="secondary" type="button" id="clearBtn">Clear</button>
+                    </div>
+                </form>
+                <p class="note">
+                    wag ka makulet
+                </p>
+            </div>
+            <div class="panel">
+                <h2>Order Records</h2>
+                <div class="toolbar">
+                    <input id="search" placeholder="Search customer name..."><select id="filter"><option value="All">All Status</option><option>Pending</option><option>Processing</option><option>Delivered</option><option>Cancelled</option></select>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Customer Name</th><th>Order Date</th><th>Status</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="ordersBody"></tbody>
+                    </table>
+                </div>
+                <div class="empty" id="emptyMessage">
+                    No orders yet. Add your first pre-order.
+                </div>
+                <div class="actions">
+                    <button class="secondary" id="exportBtn" type="button">Export CSV</button><button class="secondary" id="printBtn" type="button">Print Orders</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const KEY = "customerPreOrders_v1";
+        let orders = JSON.parse(localStorage.getItem(KEY) || "[]");
+        const $ = id => document.getElementById(id);
+        const today = new Date().toISOString().slice(0, 10);
+        $("orderDate").value = today;
+
+        function save() {
+            localStorage.setItem(KEY, JSON.stringify(orders)); render();
+        }
+        function money(v) {
+            return "₱" + Number(v || 0).toLocaleString("en-PH", {
+                minimumFractionDigits: 2, maximumFractionDigits: 2
+            });
+        }
+        function esc(v) {
+            return String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp; "," < ":"&lt; "," > ":"&gt; ",'"':"&quot;","'":"&#39; "}[c])); }
+                function render() {
+                    $("totalCount").textContent = orders.length;
+                    ["Pending", "Processing", "Delivered"].forEach(s => $((s.toLowerCase())+"Count").textContent = orders.filter(o => o.status === s).length);
+                    const term = $("search").value.toLowerCase(), filter = $("filter").value;
+                    const shown = orders.filter(o => (filter === "All" || o.status === filter) && String(o.customer || "").toLowerCase().includes(term));
+                    $("ordersBody").innerHTML = shown.map(o => `<tr>
+                        <td><b>${esc(o.customer)}</b>${o.notes?`<br><small>${esc(o.notes)}</small>`: ""}</td>
+                        <td>${esc(o.orderDate)}</td>
+                        <td><span class="pill ${o.status.toLowerCase()}">${esc(o.status)}</span><br>
+                        <select aria-label="Update status" onchange="changeStatus('${o.id}',this.value)" style="margin-top:6px;padding:5px;font-size:12px">
+                        ${["Pending", "Processing", "Delivered", "Cancelled"].map(s => `<option ${o.status === s?"selected": ""}>${s}</option>`).join("")}
+                        </select></td>
+                        <td><button class="secondary smallbtn" onclick="editOrder('${o.id}')">Edit</button><button class="danger smallbtn" onclick="deleteOrder('${o.id}')">Delete</button></td>
+                        </tr>`).join("");
+                    $("emptyMessage").style.display = shown.length?"none": "block";
+                }
+                $("orderForm").addEventListener("submit", e=> {
+                    e.preventDefault();
+                    const id = $("editId").value || String(Date.now());
+                    const data = {
+                        id, customer: $("customer").value.trim(), orderDate: $("orderDate").value,
+                        status: $("status").value, notes: $("notes").value.trim()};
+                    const index = orders.findIndex(o => o.id === id);
+                    if (index >= 0) orders[index] = data; else orders.unshift(data);
+                    save(); resetForm();
+                });
+                function resetForm() {
+                    $("orderForm").reset(); $("editId").value = ""; $("orderDate").value = today; $("formTitle").textContent = "Add New Pre-Order"; $("saveBtn").textContent = "Save Order";
+                }
+                $("clearBtn").addEventListener("click",
+                    resetForm);
+                window.editOrder = id => {
+                    const o = orders.find(x => x.id === id); if (!o)return;
+                    $("editId").value = o.id;
+                    ["customer",
+                        "orderDate",
+                        "status",
+                        "notes"].forEach(k => $(k).value = o[k]??"");
+                    $("formTitle").textContent = "Edit Pre-Order"; $("saveBtn").textContent = "Update Order";
+                    window.scrollTo({
+                        top: 0, behavior: "smooth"
+                    });
+                };
+                window.deleteOrder = id => {
+                    if (confirm("Delete this order?")) {
+                        orders = orders.filter(o => o.id !== id); save();
+                    }};
+                window.changeStatus = (id, status)=> {
+                    const o = orders.find(x => x.id === id); if (o) {
+                        o.status = status; save();
+                    }};
+                $("search").addEventListener("input", render); $("filter").addEventListener("change", render);
+                $("exportBtn").addEventListener("click", ()=> {
+                    const cols = ["customer", "orderDate", "status", "notes"];
+                    const csv = [cols.join(","), ...orders.map(o => cols.map(k => '"'+String(o[k]??"").replace(/"/g, '""')+'"').join(","))].join("\n");
+                    const blob = new Blob(["\ufeff"+csv], {
+                        type: "text/csv;charset=utf-8;"
+                    });
+                    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "pre-order-records.csv"; a.click(); URL.revokeObjectURL(a.href);
+                });
+                $("printBtn").addEventListener("click", ()=>window.print());
+                render();
+            </script>
+            </body>
+        </html>
