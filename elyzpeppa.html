@@ -1,0 +1,60 @@
+
+<!-- GALLON TRACKING -->
+
+<div class="section">
+<h2>🫙 Gallon Tracking / Customer Gallons</h2>
+
+<h3>Release Gallon</h3>
+
+<input type="text" id="gCustomer"
+placeholder="Customer Name">
+
+<select id="gType">
+<option value="slim">Slim Gallon</option>
+<option value="round">Round Gallon</option>
+</select>
+
+<input type="number" id="gQty"
+placeholder="Number of Gallons" min="1">
+
+<button onclick="releaseGallon()">Release Gallon</button>
+
+<hr>
+
+<h3>Return Gallon</h3>
+
+<input type="text" id="returnCustomer"
+placeholder="Customer Name">
+
+<select id="returnType">
+<option value="slim">Slim Gallon</option>
+<option value="round">Round Gallon</option>
+</select>
+
+<input type="number" id="returnQty"
+placeholder="Returned Quantity" min="1">
+
+<button onclick="returnGallon()">Save Return</button>
+
+<hr>
+
+<h3>Customer Gallon Records</h3>
+
+<input type="text" id="gSearch"
+placeholder="Search Customer..."
+oninput="displayGallons()">
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Slim Gallon</th>
+<th>Round Gallon</th>
+<th>Total Gallons</th>
+</tr>
+</thead>
+<tbody id="gallonRecords"></tbody>
+</table>
+</div>
+</div>
